@@ -1,0 +1,6 @@
+/data
+/documents
+/images
+/venv
+__pycache__/*.pyc
+*.pyo
