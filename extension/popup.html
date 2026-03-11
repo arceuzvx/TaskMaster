@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TASKMASTER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">TSK<span>.</span></div>
+  <div class="header-right">
+    <div class="sync-dot" id="sync-dot" title="Sync status"></div>
+    <button class="icon-btn" id="sync-btn" title="Sync tasks">↺</button>
+  </div>
+</header>
+
+<!-- FOCUS TOGGLE BAR -->
+<div class="focus-bar" id="focus-bar">
+  <div class="focus-info">
+    <span class="focus-label" id="focus-label">FOCUS OFF</span>
+    <span class="focus-sub" id="focus-sub">Click to start watching</span>
+  </div>
+  <button class="toggle-btn" id="focus-toggle">
+    <span class="toggle-knob"></span>
+  </button>
+</div>
+
+<!-- ACTIVE TASK PANEL (shown when a task is running) -->
+<div class="active-panel" id="active-panel" style="display:none;">
+  <div class="active-task-name" id="active-task-name">—</div>
+  <div class="active-timer" id="active-timer">00:00</div>
+  <div class="active-controls">
+    <button class="btn btn-pause" id="pause-btn">⏸ Pause</button>
+    <button class="btn btn-done" id="done-btn">✓ Done</button>
+  </div>
+</div>
+
+<!-- CHECKIN PANEL (shown on inactivity) -->
+<div class="checkin-panel" id="checkin-panel" style="display:none;">
+  <div class="checkin-label">◈ TASKMASTER</div>
+  <div class="checkin-message" id="checkin-message"></div>
+  <textarea class="checkin-reply" id="checkin-reply" placeholder="Tell me what's going on..."></textarea>
+  <div class="checkin-actions">
+    <button class="btn btn-still-working" id="still-working-btn">Still on it</button>
+    <button class="btn btn-took-break" id="took-break-btn">Took a break</button>
+  </div>
+</div>
+
+<!-- VERIFY PANEL (shown when marking task done) -->
+<div class="verify-panel" id="verify-panel" style="display:none;">
+  <div class="verify-label">◈ VERIFYING</div>
+  <div class="verify-spinner" id="verify-spinner">
+    <div class="spinner"></div>
+    <span>Checking your work...</span>
+  </div>
+  <div class="verify-result" id="verify-result" style="display:none;">
+    <div class="verify-icon" id="verify-icon"></div>
+    <div class="verify-message" id="verify-message"></div>
+    <div class="verify-actions" id="verify-actions"></div>
+  </div>
+</div>
+
+<!-- TASK LIST -->
+<div class="task-section" id="task-section">
+  <div class="section-header">
+    <span class="section-title">TODAY</span>
+    <button class="add-btn" id="add-btn">+ Add</button>
+  </div>
+
+  <!-- ADD TASK FORM (hidden by default) -->
+  <div class="add-form" id="add-form" style="display:none;">
+    <input type="text" class="task-input" id="task-name-input" placeholder="What are you working on?" />
+    <div class="add-form-row">
+      <input type="number" class="mins-input" id="task-mins-input" placeholder="min" min="1" max="480" value="25" />
+      <button class="btn btn-confirm" id="confirm-add-btn">Add →</button>
+      <button class="btn btn-cancel" id="cancel-add-btn">✕</button>
+    </div>
+  </div>
+
+  <div class="task-list" id="task-list">
+    <div class="empty-state" id="empty-state">
+      <span>No tasks yet.</span>
+      <span class="empty-sub">Add one above or via Telegram.</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span id="footer-status">Last synced: never</span>
+  <button class="text-btn" id="refresh-btn">refresh</button>
+</footer>
+
+<script src="popup.js"></script>
+</body>
+</html>
